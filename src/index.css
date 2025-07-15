@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tech-focused C Programming Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 215 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 20% 15%;
+
+    --primary: 215 80% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 215 20% 95%;
+    --secondary-foreground: 215 20% 15%;
+
+    --muted: 215 20% 96%;
+    --muted-foreground: 215 16% 46%;
+
+    --accent: 175 60% 50%;
+    --accent-foreground: 215 20% 15%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 215 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(215 80% 50%), hsl(215 60% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 80% 50%), hsl(175 60% 50%));
+    --gradient-accent: linear-gradient(90deg, hsl(175 60% 50%), hsl(175 70% 60%));
+
+    /* Code theme colors */
+    --code-bg: 215 30% 8%;
+    --code-text: 0 0% 95%;
+    --code-comment: 215 20% 65%;
+    --code-keyword: 215 80% 70%;
+    --code-string: 142 70% 65%;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(215 20% 20% / 0.1), 0 2px 4px -1px hsl(215 20% 20% / 0.06);
+    --shadow-medium: 0 10px 15px -3px hsl(215 20% 20% / 0.1), 0 4px 6px -2px hsl(215 20% 20% / 0.05);
+    --shadow-large: 0 20px 25px -5px hsl(215 20% 20% / 0.1), 0 10px 10px -5px hsl(215 20% 20% / 0.04);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .dark {
+    --background: 215 30% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 215 80% 60%;
+    --primary-foreground: 215 30% 8%;
+
+    --secondary: 215 20% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 175 60% 50%;
+    --accent-foreground: 215 30% 8%;
+
+    --success: 142 76% 45%;
+    --success-foreground: 215 30% 8%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 215 30% 8%;
+
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 215 80% 60%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(215 80% 60%), hsl(215 60% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 80% 60%), hsl(175 60% 55%));
+    --gradient-accent: linear-gradient(90deg, hsl(175 60% 55%), hsl(175 70% 65%));
+
+    /* Dark shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-medium: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -2px hsl(0 0% 0% / 0.2);
+    --shadow-large: 0 20px 25px -5px hsl(0 0% 0% / 0.3), 0 10px 10px -5px hsl(0 0% 0% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Primary gradient button */
+  .btn-gradient {
+    background: var(--gradient-primary);
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+
+  /* Code block styling */
+  .code-block {
+    background: hsl(var(--code-bg));
+    color: hsl(var(--code-text));
+    @apply rounded-lg p-4 font-mono text-sm;
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    backdrop-filter: blur(16px);
+    background: hsl(var(--background) / 0.8);
+    @apply border border-border/50;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  /* Section backgrounds */
+  .section-gradient {
+    background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px hsl(var(--foreground) / 0.1);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+}
